@@ -97,6 +97,7 @@ models:
           version: {}
         voting_power: '10'
       hello_world_message: HELLO_WORLD!
+      owner_address: '0x0000000000000000000000000000000000000000'
       keeper_timeout: 30.0
       max_attempts: 10
       max_healthcheck: 120
@@ -112,7 +113,7 @@ models:
       service_registry_address: null
       setup:
         all_participants:
-        - '0x0000000000000000000000000000000000000000'
+        - ["0x4E9C243ac1c45b8DDC57251D70D04EE566720F75","0xDaB227F4Ab5340Ef8C6623D74522288d37d90144","0xD405f2B9E474E7Dd1bA3981DCc18340062ab935B", "0x1522A6Ef827F5912FBA4EBda11C7360B24f840D9"]
         safe_contract_address: '0x0000000000000000000000000000000000000000'
         consensus_threshold: null
       share_tm_config_on_startup: false
