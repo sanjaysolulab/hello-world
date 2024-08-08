@@ -25,7 +25,7 @@ protocols:
 skills:
 - valory/abstract_abci:0.1.0:bafybeicr24cgdovqdp4bh25bpun77v7u33maydwuxwled3tuhyiaepw5gu
 - valory/abstract_round_abci:0.1.0:bafybeia6lemk5s64f26qjnd2746s5mufpzxuaf5frsqhfbr62kk3ma6sp4
-- valory/hello_world_abci:0.1.0:bafybeiebittgfcz4idj633fkrvu6qle2ajekdjxpp7slggyur7vv7s7hrq
+- valory/hello_world_abci:0.1.0:bafybeid5r3aqkzis3o4wllvvx2q24itn35xvvrw2uq245kw3ky6ebebhum
 default_ledger: ethereum
 required_ledgers:
 - ethereum
@@ -70,13 +70,13 @@ models:
   params:
     args:
       hello_world_message: ${str:HELLO_WORLD!}
-      
+      owner_address: ${str:"0x0000000000000000000000000000000000000000"}
       reset_pause_duration: ${int:10}
       service_registry_address: ${str:null}
       share_tm_config_on_startup: ${bool:false}
       on_chain_service_id: ${int:null}
       setup:
-        all_participants: ${list:["0x4E9C243ac1c45b8DDC57251D70D04EE566720F75","0xDaB227F4Ab5340Ef8C6623D74522288d37d90144","0xD405f2B9E474E7Dd1bA3981DCc18340062ab935B", "0x1522A6Ef827F5912FBA4EBda11C7360B24f840D9"]}
+        all_participants: ${list:["0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65"]}
         safe_contract_address: ${str:'0x0000000000000000000000000000000000000000'}
         consensus_threshold: ${int:null}
       tendermint_url: ${str:http://localhost:26657}

@@ -7,7 +7,7 @@ license: Apache-2.0
 fingerprint:
   README.md: bafybeiapubcoersqnsnh3acia5hd7otzt7kjxekr6gkbrlumv6tkajl6jm
 fingerprint_ignore_patterns: []
-agent: valory/hello_world:0.1.0:bafybeihtmp45mbfs5tyzrgxfoimh552on6dif42ifqidifait3ej2m5zvq
+agent: valory/hello_world:0.1.0:bafybeid7nxgppfvhvnfkbx74356rhi53yncswflechx3a4iwmprxdpboam
 number_of_agents: 4
 deployment: {}
 ---
@@ -18,7 +18,8 @@ extra:
   params_args:
     args:
       setup: &id001
-        all_participants: ${ALL_PARTICIPANTS:list:["0x4E9C243ac1c45b8DDC57251D70D04EE566720F75","0xDaB227F4Ab5340Ef8C6623D74522288d37d90144","0xD405f2B9E474E7Dd1bA3981DCc18340062ab935B", "0x1522A6Ef827F5912FBA4EBda11C7360B24f840D9"]}
+        all_participants: ${ALL_PARTICIPANTS:list:["0x4E9C243ac1c45b8DDC57251D70D04EE566720F75","0xDaB227F4Ab5340Ef8C6623D74522288d37d90144","0xD405f2B9E474E7Dd1bA3981DCc18340062ab935B",
+          "0x1522A6Ef827F5912FBA4EBda11C7360B24f840D9"]}
         safe_contract_address: ${SAFE_CONTRACT_ADDRESS:str:0x0000000000000000000000000000000000000000}
         consensus_threshold: ${CONSENSUS_THRESHOLD:int:null}
 public_id: valory/hello_world_abci:0.1.0
@@ -32,7 +33,8 @@ type: skill
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
         hello_world_message: ${HELLO_WORLD_STRING_0:str:HELLO_WORLD! (from Agent 0)}
-        owner_address: ${OWNER_ADDRESS_0:str:OWNER_ADDRESS! (from Agent 0)}
+        owner_address: ${OWNER_ADDRESS_0:str:0x0000000000000000000000000000000000000000
+          (from Agent 0)}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
       args: *id002
@@ -45,7 +47,8 @@ type: skill
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
         hello_world_message: ${HELLO_WORLD_STRING_1:str:HELLO_WORLD! (from Agent 1)}
-        owner_address: ${OWNER_ADDRESS_1:str:OWNER_ADDRESS! (from Agent 1)}
+        owner_address: ${OWNER_ADDRESS_1:str:0x0000000000000000000000000000000000000000
+          (from Agent 1)}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
       args: *id002
@@ -58,7 +61,8 @@ type: skill
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
         hello_world_message: ${HELLO_WORLD_STRING_2:str:HELLO_WORLD! (from Agent 2)}
-        owner_address: ${OWNER_ADDRESS_2:str:OWNER_ADDRESS! (from Agent 2)}
+        owner_address: ${OWNER_ADDRESS_2:str:0x0000000000000000000000000000000000000000
+          (from Agent 2)}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
       args: *id002
@@ -71,7 +75,8 @@ type: skill
         on_chain_service_id: ${ON_CHAIN_SERVICE_ID:int:null}
         setup: *id001
         hello_world_message: ${HELLO_WORLD_STRING_3:str:HELLO_WORLD! (from Agent 3)}
-        owner_address: ${OWNER_ADDRESS_3:str:OWNER_ADDRESS! (from Agent 3)}
+        owner_address: ${OWNER_ADDRESS_3:str:0x0000000000000000000000000000000000000000
+          (from Agent 3)}
         reset_pause_duration: ${RESET_PAUSE_DURATION:int:10}
     benchmark_tool:
       args: *id002

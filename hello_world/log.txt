@@ -1,0 +1,24 @@
+[2024-08-08 18:46:32,796] [INFO] [hello_world] Entered in the 'registration_round' round for period 0
+[2024-08-08 18:46:32,800] [INFO] [hello_world] Start processing messages...
+[2024-08-08 18:46:32,801] [INFO] [hello_world] Entered in the 'registration_behaviour' behaviour
+[2024-08-08 18:46:32,801] [INFO] [hello_world] Synchronizing with Tendermint...
+[2024-08-08 18:46:47,852] [ERROR] [hello_world] Could not synchronize with Tendermint!
+[2024-08-08 18:46:47,853] [INFO] [hello_world] Synchronizing with Tendermint...
+[2024-08-08 18:46:50,871] [INFO] [hello_world] local height == remote == 0; Synchronization complete.
+[2024-08-08 18:46:51,037] [INFO] [hello_world] 'registration_round' round is done with event: Event.DONE
+[2024-08-08 18:46:51,037] [INFO] [hello_world] Entered in the 'collect_randomness_round' round for period 0
+[2024-08-08 18:46:51,039] [INFO] [hello_world] Entered in the 'collect_randomness_behaviour' behaviour
+[2024-08-08 18:46:52,048] [INFO] [hello_world] Retrieved DRAND values: {'round': 4256399, 'signature': 'b28b79217ecdfd5f68d7f87978ff017b1d0a1b2c1085fcb58028e2a1f9f9c39243f9917f460b26366c3759f9330ffe740c51fb5efec19f2b1813857da75c155ae0d06202ce15280354e131c5caec40b06f799071e90a733b035bdca3b3c17f70', 'previous_signature': 'a6a91296bb1bcbf6b91472cea9df46a42949c0193d824fd10b196d3f483ad868ff5ca67a6d37f8977b4014a3fbcf581015e63810a2059a8181ee3a569b1fdebb38ff64af6f835676f9a3d84d25e5a23dd0a9385af3253a71c45b336d58c64ec3', 'randomness': '772b2cbf30c36061aed6f6ab0cedb1e964daba5cdb2985cc8a575af3675c8ccc'}.
+[2024-08-08 18:46:53,087] [INFO] [hello_world] 'collect_randomness_round' round is done with event: Event.DONE
+[2024-08-08 18:46:53,088] [INFO] [hello_world] Entered in the 'select_keeper_round' round for period 0
+[2024-08-08 18:46:53,090] [INFO] [hello_world] Entered in the 'select_keeper_behaviour' behaviour
+[2024-08-08 18:46:53,091] [INFO] [hello_world] Selected a new keeper: 0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65.
+[2024-08-08 18:46:54,115] [INFO] [hello_world] 'select_keeper_round' round is done with event: Event.DONE
+[2024-08-08 18:46:54,115] [INFO] [hello_world] Entered in the 'print_message_round' round for period 0
+[2024-08-08 18:46:54,119] [INFO] [hello_world] Entered in the 'print_message_behaviour' behaviour
+[2024-08-08 18:46:54,121] [INFO] [hello_world] printed_message=Agent hello_world (address 0x15d34AAf54267DB7D7c367839AAf71A00a2C6A65) in period 0 says: HELLO_WORLD! owner:"0x0000000000000000000000000000000000000000"
+[2024-08-08 18:46:55,134] [INFO] [hello_world] 'print_message_round' round is done with event: Event.DONE
+[2024-08-08 18:46:55,134] [INFO] [hello_world] Entered in the 'reset_and_pause_round' round for period 0
+[2024-08-08 18:46:55,136] [INFO] [hello_world] Entered in the 'reset_and_pause_behaviour' behaviour
+[2024-08-08 18:46:55,137] [INFO] [hello_world] Period end.
+[2024-08-08 18:47:00,863] [INFO] [hello_world] HTTP Client has shutdown on port: 8000.
