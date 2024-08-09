@@ -39,6 +39,7 @@ from packages.valory.skills.hello_world_abci.rounds import (
     CollectRandomnessRound,
     HelloWorldAbciApp,
     PrintMessageRound,
+    PrintCountRound,
     RegistrationRound,
     ResetAndPauseRound,
     SelectKeeperRound,
@@ -206,6 +207,33 @@ class PrintMessageBehaviour(HelloWorldABCIBaseBehaviour, ABC):
         self.set_done()
 
 
+class PrintCountBehaviour(HelloWorldABCIBaseBehaviour, ABC):
+    """Prints the celebrated 'HELLO WORLD!' message."""
+
+    matching_round = PrintCountRound
+
+    def async_act(self) -> Generator:
+        
+        # if (
+        #     self.context.agent_address
+        #     == self.synchronized_data.most_voted_keeper_address
+        # ):
+        #     message = self.params.hello_world_string + " owner adress ==>>" + self.params.owner_address
+        # else:
+        #     message = ":|"
+
+        printed_message = 2
+
+        print("my message ===>", printed_message)
+        self.context.logger.info(f"printed_message={printed_message}")
+        payload = PrintMessagePayload(self.context.agent_address, printed_message)
+
+        yield from self.send_a2a_transaction(payload)
+        yield from self.wait_until_round_end()
+
+        self.set_done()
+
+
 class ResetAndPauseBehaviour(HelloWorldABCIBaseBehaviour):
     """Reset behaviour."""
 
@@ -251,5 +279,6 @@ class HelloWorldRoundBehaviour(AbstractRoundBehaviour):
         CollectRandomnessBehaviour,  # type: ignore
         SelectKeeperBehaviour,  # type: ignore
         PrintMessageBehaviour,  # type: ignore
+        PrintCountBehaviour,
         ResetAndPauseBehaviour,  # type: ignore
     }

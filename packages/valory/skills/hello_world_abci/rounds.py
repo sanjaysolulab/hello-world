@@ -36,6 +36,7 @@ from packages.valory.skills.abstract_round_abci.base import (
 from packages.valory.skills.hello_world_abci.payloads import (
     CollectRandomnessPayload,
     PrintMessagePayload,
+    PrintCountPayload,
     RegistrationPayload,
     ResetPayload,
     SelectKeeperPayload,
@@ -69,6 +70,16 @@ class SynchronizedData(
             List[str],
             self.db.get_strict("printed_messages"),
         )
+
+    @property
+    def printed_count(self) -> List[str]:
+        """Get the printed messages list."""
+
+        return cast(
+            List[str],
+            self.db.get_strict("printed_messages"),
+        )
+
 
 
 class HelloWorldABCIAbstractRound(AbstractRound, ABC):
@@ -147,6 +158,28 @@ class PrintMessageRound(CollectDifferentUntilAllRound, HelloWorldABCIAbstractRou
         return None
 
 
+class PrintCountRound(CollectDifferentUntilAllRound, HelloWorldABCIAbstractRound):
+    """A round in which the keeper prints the message"""
+
+    payload_class = PrintCountPayload
+
+    def end_block(self) -> Optional[Tuple[BaseSynchronizedData, Event]]:
+        """Process the end of the block."""
+        if self.collection_threshold_reached:
+            synchronized_data = self.synchronized_data.update(
+                participants=tuple(sorted(self.collection)),
+                printed_messages=sorted(
+                    [
+                        cast(PrintCountPayload, payload).message
+                        for payload in self.collection.values()
+                    ]
+                ),
+                synchronized_data_class=SynchronizedData,
+            )
+            return synchronized_data, Event.DONE
+        return None
+
+
 class ResetAndPauseRound(CollectSameUntilThresholdRound, HelloWorldABCIAbstractRound):
     """A round that represents that consensus is reached (the final round)"""
 
@@ -188,6 +221,9 @@ class HelloWorldAbciApp(AbciApp[Event]):
         3. PrintMessageRound
             - done: 4.
             - round timeout: 0.
+        3.1. PrintCountRound
+            - done: 4.1.
+            - round timeout: 0.
         4. ResetAndPauseRound
             - done: 1.
             - no majority: 0.
@@ -213,11 +249,16 @@ class HelloWorldAbciApp(AbciApp[Event]):
         },
         SelectKeeperRound: {
             Event.DONE: PrintMessageRound,
+            Event.DONE: PrintCountRound,
             Event.NONE: RegistrationRound,
             Event.NO_MAJORITY: RegistrationRound,
             Event.ROUND_TIMEOUT: RegistrationRound,
         },
         PrintMessageRound: {
+            Event.DONE: ResetAndPauseRound,
+            Event.ROUND_TIMEOUT: RegistrationRound,
+        },
+        PrintCountRound: {
             Event.DONE: ResetAndPauseRound,
             Event.ROUND_TIMEOUT: RegistrationRound,
         },
